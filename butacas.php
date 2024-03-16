@@ -2,8 +2,8 @@
 // realizar un programa que simule las butacas ocupadas de un cine utilizando
 // arreglos y variables glovales y metodos post y get
 // crear el array para simular la butacas 
-// $ButacasOcupadas = [3,5,8,10,15];
-$ButacasOcupadas = array(3,5,8,10,15);
+ $ButacasOcupadas = [];
+// $ButacasOcupadas = array(3,5,8,10,15);
 // crear una funcion que verifique que las butacas esten ocupadas
 function ButacaOcupada($butaca,$ButacasOcupadas){
     return in_array($butaca,$ButacasOcupadas);
@@ -26,11 +26,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         if(ButacaOcupada($ButacaSelect,$ButacasOcupadas)){
             echo "La butaca $butacaSelect esta ocupada";
             // var_dump($ButacasOcupadas);
-            print_r($ButacasOcupadas);
+            // print_r($ButacasOcupadas);
         }
         else{
             echo  "La butaca $butacaSelect esta disponible";
+            // agregar la butaca seleccionada al array de butacas ocupadas
+            $ButacasOcupadas[] = $ButacaSelect;
         }
     }
+}
+// Mostrar las butacas ocupadas
+echo "<br> Butacas Ocupadas: ";
+foreach($ButacasOcupadas as $butaca){
+   echo $butaca ." ";
 }
 ?>
